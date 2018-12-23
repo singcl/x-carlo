@@ -1,12 +1,14 @@
-'use strict';
+/// <reference path="../typings/carlo.d.ts" />
 
-const os = require('os');
-const path = require('path');
-const si = require('systeminformation');
-const carlo = require('carlo');
+import os = require('os');
+import path = require('path');
+import si = require('systeminformation');
+
+import * as carlo from 'carlo';
 
 async function run() {
-    let app;
+    let app: carlo.IApp;
+    
     try {
         app = await carlo.launch({
             bgcolor: '#2b2e3b',
@@ -37,13 +39,15 @@ async function run() {
 }
 
 async function systeminfo() {
-    const info = {};
+    const info: si.Info = <si.Info>{};
+    
     await Promise.all([
         si.battery().then(r => info.battry = r),
         si.cpu().then(r => info.cpu = r),
         si.osInfo().then(r => info.osInfo = r)
     ]);
+
     return info;
 }
 
-module.exports = { run };
+export = run;
