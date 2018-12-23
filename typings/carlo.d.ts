@@ -1,19 +1,19 @@
-declare module "carlo" {
+declare module 'carlo' {
     export interface IApp {
-        on(x:string, callback: (w: Window) => void): void;
+        on(x: string, callback: (w: Window) => void): void;
         serveFolder(str: string): void;
         exposeFunction(str: string, x: any): Promise<void>;
         load(str: string): Promise<void>;
     }
 
-    export function launch(x: any): Promise<IApp>;
+    export function launch(x?: any): Promise<IApp>;
 }
 
 interface Window {
     load(x: string): void;
 }
 
-declare module "systeminformation" {
+declare module 'systeminformation' {
     export interface Info {
         battry: string;
         cpu: string;
