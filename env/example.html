@@ -4,48 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" chrome="1" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <title>Carlo App</title>
-        <style>
-            #table {
-                border: 1px solid #666;
-                border-collapse: collapse;
-            }
-
-            tr,
-            th,
-            td {
-                border: 1px solid #666;
-                padding: 5px;
-                text-align: left;
-            }
-        </style>
-        <script>
-            async function run() {
-                // Call the function that was exposed in Node
-                const data = await env();
-
-                const table = document.getElementById('table');
-                const fragment = document.createDocumentFragment();
-
-                for (let type in data) {
-                    const tr = document.createElement('tr');
-                    const td1 = document.createElement('td');
-                    const td2 = document.createElement('td');
-
-                    td1.textContent = type;
-                    td2.textContent = data[type];
-
-                    tr.appendChild(td1);
-                    tr.appendChild(td2);
-
-                    fragment.appendChild(tr);
-                }
-
-                table.appendChild(fragment);
-            }
-        </script>
+        <script src="./onload.js"></script>
     </head>
-    <body onload="run()">
+    <body onload="onload()">
         <table id="table">
             <tr>
                 <th>变量名</th>
